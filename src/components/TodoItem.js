@@ -22,11 +22,10 @@ const TodoItemBlock = styled.div`
     padding-bottom: 12px;
     &:hover {
         ${Remove} {
-            dispaly: initial;
+            display: initial;
         }
     }
 `;
-
 const CheckCircle = styled.div`
     width: 32px;
     height: 32px;
@@ -45,3 +44,28 @@ const CheckCircle = styled.div`
             color: #38d9a9;
     `}
 `;
+
+const Text = styled.div`
+    flex: 1;
+    font-size: 21px;
+    color: #495057;
+    ${props =>
+        props.done &&
+        css`
+            color: #ced4da;
+    `}
+`;
+
+function Todoitem({ id, done, text }){
+    return (
+        <TodoItemBlock>
+            <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
+            <Text done={done}>{text}</Text>
+            <Remove>
+                <MdDelete />
+            </Remove>
+        </TodoItemBlock>
+    );
+}
+
+export default Todoitem;
